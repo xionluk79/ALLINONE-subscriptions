@@ -1,0 +1,481 @@
+port: 7890
+allow-lan: true
+mode: rule
+log-level: info
+unified-delay: true
+tun:
+  enable: true
+  stack: gvisor
+  auto-route: true
+  strict-route: false
+  auto-detect-interface: true
+  dns-hijack:
+    - any:53
+  route-exclude-address:
+    - 100.64.0.0/10
+    - fd7a:115c:a1e0::/48
+    - 6.6.6.6/32
+    - 2000::6666/128
+dns:
+  enable: true 
+  listen: "0.0.0.0:1053"
+  ipv6: true
+  prefer-h3: false
+  respect-rules: true
+  use-system-hosts: false
+  cache-algorithm: "arc"
+  enhanced-mode: "fake-ip"
+  fake-ip-range: "198.18.0.1/16"
+  fake-ip-filter:
+    - "+.lan"
+    - "+.local"
+    - "+.msftconnecttest.com"
+    - "+.msftncsi.com"
+    - "localhost.ptlogin2.qq.com"
+    - "localhost.sec.qq.com"
+    - "+.in-addr.arpa"
+    - "+.ip6.arpa"
+    - "time.*.com"
+    - "time.*.gov"
+    - "pool.ntp.org"
+    - "localhost.work.weixin.qq.com"
+  default-nameserver: ["223.5.5.5", "119.29.29.29"]
+  nameserver:
+    - "https://1.1.1.1/dns-query"
+    - "https://8.8.8.8/dns-query"
+  proxy-server-nameserver:
+    - "https://223.5.5.5/dns-query"
+    - "https://doh.pub/dns-query"
+nameserver-policy:
+  "geosite:cn":
+     - "https://223.5.5.5/dns-query"
+     - "https://doh.pub/dns-query"
+
+proxies:
+  # CCLA40T
+  - name: vless-reality-vision-linux.de689d.com               
+    type: vless
+    server: 107.173.10.37                           
+    port: 18992                                
+    uuid: 02224175-5b3a-42a1-ab3b-48f71b857431   
+    network: tcp
+    udp: true
+    tls: true
+    flow: xtls-rprx-vision
+    servername: apple.com                 
+    reality-opts: 
+      public-key: j_ub9DfHLI8SZkRT4GSvyOZfT4IV7KZTkReCs7QBrjc    
+      short-id: 1952b6e7                      
+    client-fingerprint: chrome                  
+
+  - name: hysteria2-linux.de689d.com                            
+    type: hysteria2                                      
+    server: 107.173.10.37                               
+    port: 15000
+    ports: 
+    password: 02224175-5b3a-42a1-ab3b-48f71b857431                          
+    alpn:
+      - h3
+    sni: www.bing.com                               
+    skip-cert-verify: true
+    fast-open: true
+
+  - name: anytls-linux.de689d.com
+    type: anytls
+    server: 107.173.10.37
+    port: 14302
+    password: 02224175-5b3a-42a1-ab3b-48f71b857431
+    client-fingerprint: chrome
+    udp: true
+    idle-session-check-interval: 30
+    idle-session-timeout: 30
+    sni: www.bing.com
+    skip-cert-verify: true
+
+  # GC10T8C
+  - name: vless-reality-vision-GC10T               
+    type: vless
+    server: 172.93.220.54                           
+    port: 45172                                
+    uuid: a66b01e4-e081-4f77-b8da-98ea3304d402   
+    network: tcp
+    udp: true
+    tls: true
+    flow: xtls-rprx-vision
+    servername: apple.com                 
+    reality-opts: 
+      public-key: kLtkJA0CFev--a1C4MReb8L-1YtpLc1wrfcKdFylJA0    
+      short-id: c5f5b3f6                      
+    client-fingerprint: chrome                  
+
+  - name: hysteria2-GC10T                            
+    type: hysteria2                                      
+    server: 172.93.220.54                               
+    port: 31216
+    ports: 
+    password: a66b01e4-e081-4f77-b8da-98ea3304d402                          
+    alpn:
+      - h3
+    sni: www.bing.com                               
+    skip-cert-verify: true
+    fast-open: true
+
+  - name: anytls-GC10T
+    type: anytls
+    server: 172.93.220.54
+    port: 45143
+    password: a66b01e4-e081-4f77-b8da-98ea3304d402
+    client-fingerprint: chrome
+    udp: true
+    idle-session-check-interval: 30
+    idle-session-timeout: 30
+    sni: www.bing.com
+    skip-cert-verify: true
+
+  # GC3T2024
+  - name: vless-reality-vision-GC3T2024               
+    type: vless
+    server: 45.8.114.246                           
+    port: 57685                                
+    uuid: d3fd26b4-03f2-4ed0-97a4-1e40fcfc7b87   
+    network: tcp
+    udp: true
+    tls: true
+    flow: xtls-rprx-vision
+    servername: apple.com                 
+    reality-opts: 
+      public-key: QsfWJsweofN5ZYmgx-KneaYfYvhhAkFHiUhI1pzS5y8    
+      short-id: 20fb7b8b                      
+    client-fingerprint: chrome                  
+
+  - name: hysteria2-GC3T2024                            
+    type: hysteria2                                      
+    server: 45.8.114.246                               
+    port: 45055
+    ports: 
+    password: d3fd26b4-03f2-4ed0-97a4-1e40fcfc7b87                          
+    alpn:
+      - h3
+    sni: www.bing.com                               
+    skip-cert-verify: true
+    fast-open: true
+
+  - name: anytls-GC3T2024
+    type: anytls
+    server: 45.8.114.246
+    port: 47757
+    password: d3fd26b4-03f2-4ed0-97a4-1e40fcfc7b87
+    client-fingerprint: chrome
+    udp: true
+    idle-session-check-interval: 30
+    idle-session-timeout: 30
+    sni: www.bing.com
+    skip-cert-verify: true
+
+  # GC3T4Ciij01
+  - name: vless-reality-vision-GC3T4Ciij01               
+    type: vless
+    server: 103.150.8.99                           
+    port: 18347                                
+    uuid: 00bd55b6-949f-42f8-9e8b-3b99d7dd1a6a   
+    network: tcp
+    udp: true
+    tls: true
+    flow: xtls-rprx-vision
+    servername: apple.com                 
+    reality-opts: 
+      public-key: H8DK33Dj2l7hItR73wemokxWxmB2edV0_2h-za1O0Wk    
+      short-id: b77e7e98                      
+    client-fingerprint: chrome                  
+
+  - name: hysteria2-GC3T4Ciij01                            
+    type: hysteria2                                      
+    server: 103.150.8.99                               
+    port: 12154
+    ports: 
+    password: 00bd55b6-949f-42f8-9e8b-3b99d7dd1a6a                          
+    alpn:
+      - h3
+    sni: www.bing.com                               
+    skip-cert-verify: true
+    fast-open: true
+
+  - name: anytls-GC3T4Ciij01
+    type: anytls
+    server: 103.150.8.99
+    port: 60526
+    password: 00bd55b6-949f-42f8-9e8b-3b99d7dd1a6a
+    client-fingerprint: chrome
+    udp: true
+    idle-session-check-interval: 30
+    idle-session-timeout: 30
+    sni: www.bing.com
+    skip-cert-verify: true
+
+  # GC3T4Ciij02
+  - name: vless-reality-vision-GC3T4Ciij02               
+    type: vless
+    server: 2403:71c0:2000:152b::a                           
+    port: 62026                                
+    uuid: dbfbd77c-32c6-4816-8055-22e06a4e4c8a   
+    network: tcp
+    udp: true
+    tls: true
+    flow: xtls-rprx-vision
+    servername: apple.com                 
+    reality-opts: 
+      public-key: LoWo_AQIA0V8yA_8WjHq63VzsgIH3wCjH656B3Rs_R0    
+      short-id: c763d172                      
+    client-fingerprint: chrome                  
+
+  - name: hysteria2-GC3T4Ciij02                            
+    type: hysteria2                                      
+    server: 2403:71c0:2000:152b::a                               
+    port: 44383
+    ports: 
+    password: dbfbd77c-32c6-4816-8055-22e06a4e4c8a                          
+    alpn:
+      - h3
+    sni: www.bing.com                               
+    skip-cert-verify: true
+    fast-open: true
+
+  - name: anytls-GC3T4Ciij02
+    type: anytls
+    server: 2403:71c0:2000:152b::a
+    port: 41703
+    password: dbfbd77c-32c6-4816-8055-22e06a4e4c8a
+    client-fingerprint: chrome
+    udp: true
+    idle-session-check-interval: 30
+    idle-session-timeout: 30
+    sni: www.bing.com
+    skip-cert-verify: true
+
+  # GC3T4Csb01
+  - name: vless-reality-vision-GC3T4Csb01               
+    type: vless
+    server: 45.153.245.140                           
+    port: 45458                                
+    uuid: ad5b6b19-8487-4e01-9604-e2bbec166b2b   
+    network: tcp
+    udp: true
+    tls: true
+    flow: xtls-rprx-vision
+    servername: apple.com                 
+    reality-opts: 
+      public-key: 2pTtuSir_6-jaAS-BeXRS4K8KyPeplyeJYI3XeNY6hw    
+      short-id: 6623476a                      
+    client-fingerprint: chrome                  
+
+  - name: hysteria2-GC3T4Csb01                            
+    type: hysteria2                                      
+    server: 45.153.245.140                               
+    port: 56284
+    ports: 
+    password: ad5b6b19-8487-4e01-9604-e2bbec166b2b                          
+    alpn:
+      - h3
+    sni: www.bing.com                               
+    skip-cert-verify: true
+    fast-open: true
+
+  - name: anytls-GC3T4Csb01
+    type: anytls
+    server: 45.153.245.140
+    port: 52869
+    password: ad5b6b19-8487-4e01-9604-e2bbec166b2b
+    client-fingerprint: chrome
+    udp: true
+    idle-session-check-interval: 30
+    idle-session-timeout: 30
+    sni: www.bing.com
+    skip-cert-verify: true
+
+  # GC3T4Csb02
+  - name: vless-reality-vision-GC3T4Csb02               
+    type: vless
+    server: 2a12:a304:4:79f::a                           
+    port: 17690                                
+    uuid: 36a0fcd9-8380-4bb4-b747-e19eeb4b885a   
+    network: tcp
+    udp: true
+    tls: true
+    flow: xtls-rprx-vision
+    servername: apple.com                 
+    reality-opts: 
+      public-key: ZSgUWADk1EkljZWFO36XE5m15L1b5SW9ay_IBU6FBCg    
+      short-id: df54f6fc                      
+    client-fingerprint: chrome                  
+
+  - name: hysteria2-GC3T4Csb02                            
+    type: hysteria2                                      
+    server: 2a12:a304:4:79f::a                               
+    port: 24766
+    ports: 
+    password: 36a0fcd9-8380-4bb4-b747-e19eeb4b885a                          
+    alpn:
+      - h3
+    sni: www.bing.com                               
+    skip-cert-verify: true
+    fast-open: true
+
+  - name: anytls-GC3T4Csb02
+    type: anytls
+    server: 2a12:a304:4:79f::a
+    port: 38417
+    password: 36a0fcd9-8380-4bb4-b747-e19eeb4b885a
+    client-fingerprint: chrome
+    udp: true
+    idle-session-check-interval: 30
+    idle-session-timeout: 30
+    sni: www.bing.com
+    skip-cert-verify: true
+
+  # GT3T4Ciij03 (GC3T4Ciij03)
+  - name: vless-reality-vision-GC3T4Ciij03               
+    type: vless
+    server: 45.149.156.106                           
+    port: 49480                                
+    uuid: d4c1d58f-e75d-445b-909a-d2cf5410bb31   
+    network: tcp
+    udp: true
+    tls: true
+    flow: xtls-rprx-vision
+    servername: apple.com                 
+    reality-opts: 
+      public-key: nJAhh_O5iwfa6BLGqIKJkQOaL8o1vVTC3xH_4J9DtVs    
+      short-id: 664a063d                      
+    client-fingerprint: chrome                  
+
+  - name: hysteria2-GC3T4Ciij03                            
+    type: hysteria2                                      
+    server: 45.149.156.106                               
+    port: 57382
+    ports: 
+    password: d4c1d58f-e75d-445b-909a-d2cf5410bb31                          
+    alpn:
+      - h3
+    sni: www.bing.com                               
+    skip-cert-verify: true
+    fast-open: true
+
+  - name: anytls-GC3T4Ciij03
+    type: anytls
+    server: 45.149.156.106
+    port: 22279
+    password: d4c1d58f-e75d-445b-909a-d2cf5410bb31
+    client-fingerprint: chrome
+    udp: true
+    idle-session-check-interval: 30
+    idle-session-timeout: 30
+    sni: www.bing.com
+    skip-cert-verify: true
+
+proxy-groups:
+  - name: 负载均衡
+    type: load-balance
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    strategy: round-robin
+    proxies:
+      - vless-reality-vision-linux.de689d.com
+      - hysteria2-linux.de689d.com
+      - anytls-linux.de689d.com
+      - vless-reality-vision-GC10T
+      - hysteria2-GC10T
+      - anytls-GC10T
+      - vless-reality-vision-GC3T2024
+      - hysteria2-GC3T2024
+      - anytls-GC3T2024
+      - vless-reality-vision-GC3T4Ciij01
+      - hysteria2-GC3T4Ciij01
+      - anytls-GC3T4Ciij01
+      - vless-reality-vision-GC3T4Ciij02
+      - hysteria2-GC3T4Ciij02
+      - anytls-GC3T4Ciij02
+      - vless-reality-vision-GC3T4Csb01
+      - hysteria2-GC3T4Csb01
+      - anytls-GC3T4Csb01
+      - vless-reality-vision-GC3T4Csb02
+      - hysteria2-GC3T4Csb02
+      - anytls-GC3T4Csb02
+      - vless-reality-vision-GC3T4Ciij03
+      - hysteria2-GC3T4Ciij03
+      - anytls-GC3T4Ciij03
+
+  - name: 自动选择
+    type: url-test
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    proxies:
+      - vless-reality-vision-linux.de689d.com
+      - hysteria2-linux.de689d.com
+      - anytls-linux.de689d.com
+      - vless-reality-vision-GC10T
+      - hysteria2-GC10T
+      - anytls-GC10T
+      - vless-reality-vision-GC3T2024
+      - hysteria2-GC3T2024
+      - anytls-GC3T2024
+      - vless-reality-vision-GC3T4Ciij01
+      - hysteria2-GC3T4Ciij01
+      - anytls-GC3T4Ciij01
+      - vless-reality-vision-GC3T4Ciij02
+      - hysteria2-GC3T4Ciij02
+      - anytls-GC3T4Ciij02
+      - vless-reality-vision-GC3T4Csb01
+      - hysteria2-GC3T4Csb01
+      - anytls-GC3T4Csb01
+      - vless-reality-vision-GC3T4Csb02
+      - hysteria2-GC3T4Csb02
+      - anytls-GC3T4Csb02
+      - vless-reality-vision-GC3T4Ciij03
+      - hysteria2-GC3T4Ciij03
+      - anytls-GC3T4Ciij03
+
+  - name: 🌍选择代理节点
+    type: select
+    proxies:
+      - 负载均衡
+      - 自动选择
+      - DIRECT
+      - vless-reality-vision-linux.de689d.com
+      - hysteria2-linux.de689d.com
+      - anytls-linux.de689d.com
+      - vless-reality-vision-GC10T
+      - hysteria2-GC10T
+      - anytls-GC10T
+      - vless-reality-vision-GC3T2024
+      - hysteria2-GC3T2024
+      - anytls-GC3T2024
+      - vless-reality-vision-GC3T4Ciij01
+      - hysteria2-GC3T4Ciij01
+      - anytls-GC3T4Ciij01
+      - vless-reality-vision-GC3T4Ciij02
+      - hysteria2-GC3T4Ciij02
+      - anytls-GC3T4Ciij02
+      - vless-reality-vision-GC3T4Csb01
+      - hysteria2-GC3T4Csb01
+      - anytls-GC3T4Csb01
+      - vless-reality-vision-GC3T4Csb02
+      - hysteria2-GC3T4Csb02
+      - anytls-GC3T4Csb02
+      - vless-reality-vision-GC3T4Ciij03
+      - hysteria2-GC3T4Ciij03
+      - anytls-GC3T4Ciij03
+
+rules:
+  - PROCESS-NAME,Tailscale,DIRECT
+  - PROCESS-NAME,io.tailscale.ipn.macsys.network-extension,DIRECT
+  - IP-CIDR,100.64.0.0/10,DIRECT,no-resolve
+  - IP-CIDR6,fd7a:115c:a1e0::/48,DIRECT,no-resolve
+  - IP-CIDR,6.6.6.6/32,DIRECT,no-resolve
+  - IP-CIDR6,2000::6666/128,DIRECT,no-resolve
+  - DOMAIN-SUFFIX,heiyu.space,DIRECT
+  - DOMAIN-SUFFIX,lazycat.cloud,DIRECT
+  - DOMAIN-SUFFIX,lazycatmicroserver.com,DIRECT
+  - GEOIP,LAN,DIRECT
+  - GEOIP,CN,DIRECT
+  - MATCH,🌍选择代理节点
