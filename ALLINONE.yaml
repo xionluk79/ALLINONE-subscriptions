@@ -476,6 +476,10 @@ rules:
   - DOMAIN-SUFFIX,heiyu.space,DIRECT
   - DOMAIN-SUFFIX,lazycat.cloud,DIRECT
   - DOMAIN-SUFFIX,lazycatmicroserver.com,DIRECT
+  - DOMAIN-SUFFIX,okx.com,🌍选择代理节点
+  - DOMAIN-SUFFIX,okx.ac,🌍选择代理节点
+  - DOMAIN-SUFFIX,okx.cab,🌍选择代理节点
+  - DOMAIN-KEYWORD,okx,🌍选择代理节点
   - GEOIP,LAN,DIRECT
   - GEOIP,CN,DIRECT
   - MATCH,🌍选择代理节点
