@@ -372,6 +372,46 @@ proxies:
     sni: www.bing.com
     skip-cert-verify: true
 
+  # AWSEU
+  - name: vless-reality-vision-awseu               
+    type: vless
+    server: 34.250.253.106                           
+    port: 14426                                
+    uuid: e8ee957e-755f-4460-b599-e28556e0e06e   
+    network: tcp
+    udp: true
+    tls: true
+    flow: xtls-rprx-vision
+    servername: apple.com                 
+    reality-opts: 
+      public-key: KSs50Ecz25uHRgqRa-Pbzj5s79TLUn03wREbplPpGGg    
+      short-id: 1edea47e                      
+    client-fingerprint: chrome                  
+
+  - name: hysteria2-awseu                            
+    type: hysteria2                                      
+    server: 34.250.253.106                               
+    port: 46749
+    ports: 
+    password: e8ee957e-755f-4460-b599-e28556e0e06e                          
+    alpn:
+      - h3
+    sni: www.bing.com                               
+    skip-cert-verify: true
+    fast-open: true
+
+  - name: anytls-awseu
+    type: anytls
+    server: 34.250.253.106
+    port: 44069
+    password: e8ee957e-755f-4460-b599-e28556e0e06e
+    client-fingerprint: chrome
+    udp: true
+    idle-session-check-interval: 30
+    idle-session-timeout: 30
+    sni: www.bing.com
+    skip-cert-verify: true
+
 proxy-groups:
   - name: 负载均衡
     type: load-balance
@@ -403,6 +443,9 @@ proxy-groups:
       - vless-reality-vision-GC3T4Ciij03
       - hysteria2-GC3T4Ciij03
       - anytls-GC3T4Ciij03
+      - vless-reality-vision-awseu
+      - hysteria2-awseu
+      - anytls-awseu
 
   - name: 自动选择
     type: url-test
@@ -434,6 +477,9 @@ proxy-groups:
       - vless-reality-vision-GC3T4Ciij03
       - hysteria2-GC3T4Ciij03
       - anytls-GC3T4Ciij03
+      - vless-reality-vision-awseu
+      - hysteria2-awseu
+      - anytls-awseu
 
   - name: 🌍选择代理节点
     type: select
@@ -465,6 +511,9 @@ proxy-groups:
       - vless-reality-vision-GC3T4Ciij03
       - hysteria2-GC3T4Ciij03
       - anytls-GC3T4Ciij03
+      - vless-reality-vision-awseu
+      - hysteria2-awseu
+      - anytls-awseu
 
 rules:
   - PROCESS-NAME,Tailscale,DIRECT
