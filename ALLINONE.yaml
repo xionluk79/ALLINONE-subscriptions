@@ -412,6 +412,60 @@ proxies:
     sni: www.bing.com
     skip-cert-verify: true
 
+  # LTTW
+  - name: vless-reality-vision-VM-LTTW               
+    type: vless
+    server: 207.56.137.171                           
+    port: 18733                                
+    uuid: 5eaf35f8-6be1-4f3a-9db0-6b56b8484af8   
+    network: tcp
+    udp: true
+    tls: true
+    flow: xtls-rprx-vision
+    servername: apple.com                 
+    reality-opts: 
+      public-key: axUuiDadrAWDe2O86m3Sby038CVs3D2Z_TdOk1ZPdn4    
+      short-id: eebc288c                      
+    client-fingerprint: chrome                  
+
+  - name: hysteria2-VM-LTTW                            
+    type: hysteria2                                      
+    server: 207.56.137.171                               
+    port: 21528
+    ports: 
+    password: 5eaf35f8-6be1-4f3a-9db0-6b56b8484af8                          
+    alpn:
+      - h3
+    sni: www.bing.com                               
+    skip-cert-verify: true
+    fast-open: true
+
+  - name: tuic5-VM-LTTW                            
+    server: 207.56.137.171                      
+    port: 50484                                    
+    type: tuic
+    uuid: 5eaf35f8-6be1-4f3a-9db0-6b56b8484af8       
+    password: 5eaf35f8-6be1-4f3a-9db0-6b56b8484af8   
+    alpn: [h3]
+    disable-sni: true
+    reduce-rtt: true
+    udp-relay-mode: native
+    congestion-controller: bbr
+    sni: www.bing.com                                
+    skip-cert-verify: true
+
+  - name: anytls-VM-LTTW
+    type: anytls
+    server: 207.56.137.171
+    port: 39745
+    password: 5eaf35f8-6be1-4f3a-9db0-6b56b8484af8
+    client-fingerprint: chrome
+    udp: true
+    idle-session-check-interval: 30
+    idle-session-timeout: 30
+    sni: www.bing.com
+    skip-cert-verify: true
+
 proxy-groups:
   - name: 负载均衡
     type: load-balance
@@ -446,6 +500,10 @@ proxy-groups:
       - vless-reality-vision-awseu
       - hysteria2-awseu
       - anytls-awseu
+      - vless-reality-vision-VM-LTTW
+      - hysteria2-VM-LTTW
+      - tuic5-VM-LTTW
+      - anytls-VM-LTTW
 
   - name: 自动选择
     type: url-test
@@ -480,6 +538,10 @@ proxy-groups:
       - vless-reality-vision-awseu
       - hysteria2-awseu
       - anytls-awseu
+      - vless-reality-vision-VM-LTTW
+      - hysteria2-VM-LTTW
+      - tuic5-VM-LTTW
+      - anytls-VM-LTTW
 
   - name: 🌍选择代理节点
     type: select
@@ -514,6 +576,10 @@ proxy-groups:
       - vless-reality-vision-awseu
       - hysteria2-awseu
       - anytls-awseu
+      - vless-reality-vision-VM-LTTW
+      - hysteria2-VM-LTTW
+      - tuic5-VM-LTTW
+      - anytls-VM-LTTW
 
 rules:
   - PROCESS-NAME,Tailscale,DIRECT
