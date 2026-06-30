@@ -469,6 +469,46 @@ proxies:
     sni: www.bing.com
     skip-cert-verify: true
 
+  # DP50M
+  - name: vless-DP50M-不要用               
+    type: vless
+    server: 180.178.54.50                           
+    port: 35912                                
+    uuid: a934a8f5-504a-4dd1-9181-61e034965a45   
+    network: tcp
+    udp: true
+    tls: true
+    flow: xtls-rprx-vision
+    servername: apple.com                 
+    reality-opts: 
+      public-key: fAzqWTjKUUcFtbiy9TMrAe6qfM_6m1uPkXdKXIdysUk    
+      short-id: 77731cae                      
+    client-fingerprint: chrome                  
+
+  - name: hysteria2-DP50M-不要用                            
+    type: hysteria2                                      
+    server: 180.178.54.50                               
+    port: 12862
+    ports: 
+    password: a934a8f5-504a-4dd1-9181-61e034965a45                          
+    alpn:
+      - h3
+    sni: www.bing.com                               
+    skip-cert-verify: true
+    fast-open: true
+
+  - name: anytls-DP50M-不要用
+    type: anytls
+    server: 180.178.54.50
+    port: 58914
+    password: a934a8f5-504a-4dd1-9181-61e034965a45
+    client-fingerprint: chrome
+    udp: true
+    idle-session-check-interval: 30
+    idle-session-timeout: 30
+    sni: www.bing.com
+    skip-cert-verify: true
+
 proxy-groups:
   - name: 负载均衡
     type: load-balance
@@ -507,6 +547,9 @@ proxy-groups:
       - hysteria2-VM-LTTW
       - tuic5-VM-LTTW
       - anytls-VM-LTTW
+      - vless-DP50M-不要用
+      - hysteria2-DP50M-不要用
+      - anytls-DP50M-不要用
 
   - name: 自动选择
     type: url-test
@@ -545,6 +588,9 @@ proxy-groups:
       - hysteria2-VM-LTTW
       - tuic5-VM-LTTW
       - anytls-VM-LTTW
+      - vless-DP50M-不要用
+      - hysteria2-DP50M-不要用
+      - anytls-DP50M-不要用
 
   - name: 🌍选择代理节点
     type: select
@@ -583,6 +629,9 @@ proxy-groups:
       - hysteria2-VM-LTTW
       - tuic5-VM-LTTW
       - anytls-VM-LTTW
+      - vless-DP50M-不要用
+      - hysteria2-DP50M-不要用
+      - anytls-DP50M-不要用
 
 rules:
   - PROCESS-NAME,easytier-core,DIRECT
