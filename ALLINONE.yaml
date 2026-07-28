@@ -473,39 +473,39 @@ proxies:
     sni: www.bing.com
     skip-cert-verify: true
 
-  # DP50M
-  - name: vless-DP50M-不要用               
+  # CSTONEUS1T
+  - name: vless-reality-vision-CSTONEUS1T               
     type: vless
-    server: 180.178.54.50                           
-    port: 35912                                
-    uuid: a934a8f5-504a-4dd1-9181-61e034965a45   
+    server: 38.34.18.24                           
+    port: 21981                                
+    uuid: 799b53bb-5d97-4948-8a98-7eb2d48b9b59   
     network: tcp
     udp: true
     tls: true
     flow: xtls-rprx-vision
     servername: apple.com                 
     reality-opts: 
-      public-key: fAzqWTjKUUcFtbiy9TMrAe6qfM_6m1uPkXdKXIdysUk    
-      short-id: 77731cae                      
+      public-key: q4N-eKO_IhBmgZcIeKtweRva4xGjaACOTIN-_JmhZ3o    
+      short-id: 2c60bc5f                      
     client-fingerprint: chrome                  
 
-  - name: hysteria2-DP50M-不要用                            
+  - name: hysteria2-CSTONEUS1T                            
     type: hysteria2                                      
-    server: 180.178.54.50                               
-    port: 12862
+    server: 38.34.18.24                               
+    port: 32266
     ports: 
-    password: a934a8f5-504a-4dd1-9181-61e034965a45                          
+    password: 799b53bb-5d97-4948-8a98-7eb2d48b9b59                          
     alpn:
       - h3
     sni: www.bing.com                               
     skip-cert-verify: true
     fast-open: true
 
-  - name: anytls-DP50M-不要用
+  - name: anytls-CSTONEUS1T
     type: anytls
-    server: 180.178.54.50
-    port: 58914
-    password: a934a8f5-504a-4dd1-9181-61e034965a45
+    server: 38.34.18.24
+    port: 20781
+    password: 799b53bb-5d97-4948-8a98-7eb2d48b9b59
     client-fingerprint: chrome
     udp: true
     idle-session-check-interval: 30
@@ -551,9 +551,9 @@ proxy-groups:
       - hysteria2-VM-LTTW
       - tuic5-VM-LTTW
       - anytls-VM-LTTW
-      - vless-DP50M-不要用
-      - hysteria2-DP50M-不要用
-      - anytls-DP50M-不要用
+      - vless-reality-vision-CSTONEUS1T
+      - hysteria2-CSTONEUS1T
+      - anytls-CSTONEUS1T
 
   - name: 自动选择
     type: url-test
@@ -592,9 +592,9 @@ proxy-groups:
       - hysteria2-VM-LTTW
       - tuic5-VM-LTTW
       - anytls-VM-LTTW
-      - vless-DP50M-不要用
-      - hysteria2-DP50M-不要用
-      - anytls-DP50M-不要用
+      - vless-reality-vision-CSTONEUS1T
+      - hysteria2-CSTONEUS1T
+      - anytls-CSTONEUS1T
 
   - name: 🌍选择代理节点
     type: select
@@ -633,9 +633,9 @@ proxy-groups:
       - hysteria2-VM-LTTW
       - tuic5-VM-LTTW
       - anytls-VM-LTTW
-      - vless-DP50M-不要用
-      - hysteria2-DP50M-不要用
-      - anytls-DP50M-不要用
+      - vless-reality-vision-CSTONEUS1T
+      - hysteria2-CSTONEUS1T
+      - anytls-CSTONEUS1T
 
 rules:
   - PROCESS-NAME,easytier-core,DIRECT
