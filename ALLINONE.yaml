@@ -513,6 +513,86 @@ proxies:
     sni: www.bing.com
     skip-cert-verify: true
 
+  # SA2T
+  - name: vless-reality-vision-SA2T
+    type: vless
+    server: 165.49.248.4
+    port: 59600
+    uuid: 51679237-0435-4f25-8ba8-86fecb3420ac
+    network: tcp
+    udp: true
+    tls: true
+    flow: xtls-rprx-vision
+    servername: apple.com
+    reality-opts:
+      public-key: 1BuXnInY-JldB3nD3ewVccfFUJWH66AR6RkSV9loJz4
+      short-id: 62d9f36f
+    client-fingerprint: chrome
+
+  - name: hysteria2-SA2T
+    type: hysteria2
+    server: 165.49.248.4
+    port: 61341
+    ports:
+    password: 51679237-0435-4f25-8ba8-86fecb3420ac
+    alpn:
+      - h3
+    sni: www.bing.com
+    skip-cert-verify: true
+    fast-open: true
+
+  - name: anytls-SA2T
+    type: anytls
+    server: 165.49.248.4
+    port: 34968
+    password: 51679237-0435-4f25-8ba8-86fecb3420ac
+    client-fingerprint: chrome
+    udp: true
+    idle-session-check-interval: 30
+    idle-session-timeout: 30
+    sni: www.bing.com
+    skip-cert-verify: true
+
+  # UAE2T
+  - name: vless-reality-vision-UAE2T
+    type: vless
+    server: 181.41.200.41
+    port: 55591
+    uuid: 5fad5fa5-3043-4811-a529-2e0408842aeb
+    network: tcp
+    udp: true
+    tls: true
+    flow: xtls-rprx-vision
+    servername: apple.com
+    reality-opts:
+      public-key: 61msd_vlSiEYMONYKMqkejyuy6PoXpYF8IJZSTfIDQY
+      short-id: 1bf32404
+    client-fingerprint: chrome
+
+  - name: hysteria2-UAE2T
+    type: hysteria2
+    server: 181.41.200.41
+    port: 64732
+    ports:
+    password: 5fad5fa5-3043-4811-a529-2e0408842aeb
+    alpn:
+      - h3
+    sni: www.bing.com
+    skip-cert-verify: true
+    fast-open: true
+
+  - name: anytls-UAE2T
+    type: anytls
+    server: 181.41.200.41
+    port: 41584
+    password: 5fad5fa5-3043-4811-a529-2e0408842aeb
+    client-fingerprint: chrome
+    udp: true
+    idle-session-check-interval: 30
+    idle-session-timeout: 30
+    sni: www.bing.com
+    skip-cert-verify: true
+
 proxy-groups:
   - name: 负载均衡
     type: load-balance
@@ -554,6 +634,12 @@ proxy-groups:
       - vless-reality-vision-CSTONEUS1T
       - hysteria2-CSTONEUS1T
       - anytls-CSTONEUS1T
+      - vless-reality-vision-SA2T
+      - hysteria2-SA2T
+      - anytls-SA2T
+      - vless-reality-vision-UAE2T
+      - hysteria2-UAE2T
+      - anytls-UAE2T
 
   - name: 自动选择
     type: url-test
@@ -595,6 +681,12 @@ proxy-groups:
       - vless-reality-vision-CSTONEUS1T
       - hysteria2-CSTONEUS1T
       - anytls-CSTONEUS1T
+      - vless-reality-vision-SA2T
+      - hysteria2-SA2T
+      - anytls-SA2T
+      - vless-reality-vision-UAE2T
+      - hysteria2-UAE2T
+      - anytls-UAE2T
 
   - name: 🌍选择代理节点
     type: select
@@ -636,6 +728,12 @@ proxy-groups:
       - vless-reality-vision-CSTONEUS1T
       - hysteria2-CSTONEUS1T
       - anytls-CSTONEUS1T
+      - vless-reality-vision-SA2T
+      - hysteria2-SA2T
+      - anytls-SA2T
+      - vless-reality-vision-UAE2T
+      - hysteria2-UAE2T
+      - anytls-UAE2T
 
 rules:
   - PROCESS-NAME,easytier-core,DIRECT
