@@ -260,20 +260,21 @@ proxies:
     skip-cert-verify: true
 
 
-  # CENTER01 / DP50M 落地（VLESS Reality only）
-  - name: vless-reality-vision-CENTER01
+  # LCVN1t 越南落地（VLESS Reality only, DIRECT 出站）— 替换错误的 CENTER01 175.41.22.10
+  # - name: vless-reality-vision-CENTER01  # DISABLED wrong landing 175.41.22.10
+  - name: vless-reality-vision-LCVN1t
     type: vless
-    server: 175.41.22.10
+    server: 14.225.26.80
     port: 35912
-    uuid: a934a8f5-504a-4dd1-9181-61e034965a45
+    uuid: 1580fed6-9d22-44d8-8edd-06a87fcda2b0
     network: tcp
     udp: true
     tls: true
     flow: xtls-rprx-vision
     servername: apple.com
     reality-opts:
-      public-key: fAzqWTjKUUcFtbiy9TMrAe6qfM_6m1uPkXdKXIdysUk
-      short-id: 77731cae
+      public-key: tZy7bOUdiLnqkk8cutDkZA1-bSAWnX1mCezw-m6Gfx0
+      short-id: 58ee788b
     client-fingerprint: chrome
 
 proxy-groups:
@@ -298,7 +299,7 @@ proxy-groups:
       - vless-reality-vision-GC3T4Ciij03
       - hysteria2-GC3T4Ciij03
       - anytls-GC3T4Ciij03
-      - vless-reality-vision-CENTER01
+      - vless-reality-vision-LCVN1t
 
   - name: 自动选择
     type: url-test
@@ -321,7 +322,7 @@ proxy-groups:
       - vless-reality-vision-GC3T4Ciij03
       - hysteria2-GC3T4Ciij03
       - anytls-GC3T4Ciij03
-      - vless-reality-vision-CENTER01
+      - vless-reality-vision-LCVN1t
 
   - name: 🌍选择代理节点
     type: select
@@ -344,7 +345,7 @@ proxy-groups:
       - vless-reality-vision-GC3T4Ciij03
       - hysteria2-GC3T4Ciij03
       - anytls-GC3T4Ciij03
-      - vless-reality-vision-CENTER01
+      - vless-reality-vision-LCVN1t
 
 rules:
   # --- Magpie / local gateway ---
@@ -466,16 +467,16 @@ rules:
   - DOMAIN-KEYWORD,rrcdnbf,DIRECT
   - IP-CIDR,223.5.5.5/32,DIRECT,no-resolve
 
-  # --- Claude / Anthropic 走 CENTER01 落地 ---
-  - DOMAIN-SUFFIX,claude.ai,vless-reality-vision-CENTER01
-  - DOMAIN-SUFFIX,anthropic.com,vless-reality-vision-CENTER01
-  - DOMAIN-KEYWORD,anthropic,vless-reality-vision-CENTER01
-  - DOMAIN-KEYWORD,claude,vless-reality-vision-CENTER01
+  # --- Claude / Anthropic 走 LCVN1t 越南落地 ---
+  - DOMAIN-SUFFIX,claude.ai,vless-reality-vision-LCVN1t
+  - DOMAIN-SUFFIX,anthropic.com,vless-reality-vision-LCVN1t
+  - DOMAIN-KEYWORD,anthropic,vless-reality-vision-LCVN1t
+  - DOMAIN-KEYWORD,claude,vless-reality-vision-LCVN1t
 
-  # --- Polymarket 及相关 API/CDN 走 CENTER01 落地 ---
-  - DOMAIN-SUFFIX,polymarket.com,vless-reality-vision-CENTER01
-  - DOMAIN-SUFFIX,polymarket.info,vless-reality-vision-CENTER01
-  - DOMAIN-KEYWORD,polymarket,vless-reality-vision-CENTER01
+  # --- Polymarket 及相关 API/CDN 走 LCVN1t 越南落地 ---
+  - DOMAIN-SUFFIX,polymarket.com,vless-reality-vision-LCVN1t
+  - DOMAIN-SUFFIX,polymarket.info,vless-reality-vision-LCVN1t
+  - DOMAIN-KEYWORD,polymarket,vless-reality-vision-LCVN1t
 
   # --- 交易所仍走代理（保持原策略）---
   - DOMAIN-SUFFIX,okx.com,🌍选择代理节点
