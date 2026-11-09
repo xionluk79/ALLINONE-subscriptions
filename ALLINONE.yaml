@@ -44,6 +44,7 @@ dns:
     - "time.*.gov"
     - "pool.ntp.org"
     - "localhost.work.weixin.qq.com"
+    - "tailscale.victorystock.win"
   default-nameserver: ["1.1.1.1", "8.8.8.8", "9.9.9.9"]
   nameserver:
     - "https://1.1.1.1/dns-query"
@@ -377,10 +378,14 @@ rules:
   - IP-CIDR,6.6.6.6/32,DIRECT,no-resolve
   - IP-CIDR6,2000::6666/128,DIRECT,no-resolve
   - IP-CIDR6,fc03:1136:3800::/40,DIRECT,no-resolve
+  # Tailnet 目的地址只做规则 DIRECT，不写入 tun.route-exclude-address。
+  - IP-CIDR,100.64.0.0/10,DIRECT,no-resolve
+  - IP-CIDR6,fd7a:115c:a1e0::/48,DIRECT,no-resolve
   - DOMAIN-SUFFIX,heiyu.space,DIRECT
   - DOMAIN-SUFFIX,lazycat.cloud,DIRECT
   - DOMAIN-SUFFIX,lazycatmicroserver.com,DIRECT
   - DOMAIN-SUFFIX,ly166.com,DIRECT
+  - DOMAIN,tailscale.victorystock.win,DIRECT
 
   # --- Mac Safari / WebKit（MoonTV / LunaTV 桌面端不走节点）---
   - PROCESS-NAME,Safari,DIRECT
