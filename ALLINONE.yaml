@@ -73,7 +73,7 @@ proxies:
     servername: apple.com                 
     reality-opts: 
       public-key: j_ub9DfHLI8SZkRT4GSvyOZfT4IV7KZTkReCs7QBrjc    
-      short-id: 1952b6e7                      
+      short-id: "1952b6e7"                      
     client-fingerprint: chrome                  
 
   - name: hysteria2-linux.de689d.com                            
@@ -113,7 +113,7 @@ proxies:
     servername: apple.com                 
     reality-opts: 
       public-key: kLtkJA0CFev--a1C4MReb8L-1YtpLc1wrfcKdFylJA0    
-      short-id: c5f5b3f6                      
+      short-id: "c5f5b3f6"                      
     client-fingerprint: chrome                  
 
   - name: hysteria2-GC10T                            
@@ -153,7 +153,7 @@ proxies:
     servername: apple.com                 
     reality-opts: 
       public-key: 2pTtuSir_6-jaAS-BeXRS4K8KyPeplyeJYI3XeNY6hw    
-      short-id: 6623476a                      
+      short-id: "6623476a"                      
     client-fingerprint: chrome                  
 
   - name: hysteria2-GC3T4Csb01                            
@@ -193,7 +193,7 @@ proxies:
     servername: apple.com                 
     reality-opts: 
       public-key: ZSgUWADk1EkljZWFO36XE5m15L1b5SW9ay_IBU6FBCg    
-      short-id: df54f6fc                      
+      short-id: "df54f6fc"                      
     client-fingerprint: chrome                  
 
   - name: hysteria2-GC3T4Csb02                            
@@ -233,7 +233,7 @@ proxies:
     servername: apple.com                 
     reality-opts: 
       public-key: nJAhh_O5iwfa6BLGqIKJkQOaL8o1vVTC3xH_4J9DtVs    
-      short-id: 664a063d                      
+      short-id: "664a063d"                      
     client-fingerprint: chrome                  
 
   - name: hysteria2-GC3T4Ciij03                            
@@ -275,7 +275,7 @@ proxies:
     servername: apple.com
     reality-opts:
       public-key: tZy7bOUdiLnqkk8cutDkZA1-bSAWnX1mCezw-m6Gfx0
-      short-id: 58ee788b
+      short-id: "58ee788b"
     client-fingerprint: chrome
 
 
@@ -304,7 +304,7 @@ proxies:
     servername: apple.com
     reality-opts:
       public-key: SrSPEmkqa7KGwrNVHuICVxdncAO2si8T2tem4ahEqFo
-      short-id: 2e782368
+      short-id: "2e782368"
     client-fingerprint: chrome
 
   - name: hysteria2-UUISP
