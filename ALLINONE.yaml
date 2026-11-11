@@ -552,6 +552,10 @@ rules:
   - DOMAIN-SUFFIX,polymarket.info,hysteria2-LCVN1t
   - DOMAIN-KEYWORD,polymarket,hysteria2-LCVN1t
 
+  # --- Claude detector STUN（精确域名，先于 google.com 后缀与兜底 DIRECT）---
+  - DOMAIN,stun.cloudflare.com,Claude
+  - DOMAIN,stun.l.google.com,Claude
+
   # --- Gmail / Google 账号相关优先走 LCVN1t HY2 ---
   - DOMAIN-SUFFIX,gmail.com,hysteria2-LCVN1t
   - DOMAIN-SUFFIX,googlemail.com,hysteria2-LCVN1t
