@@ -291,6 +291,46 @@ proxies:
     skip-cert-verify: true
     fast-open: true
 
+  # UUISP（VLESS Reality + Hysteria2 + AnyTLS，直连出站，无 dialer-proxy）
+  - name: vless-reality-vision-UUISP
+    type: vless
+    server: 216.167.69.239
+    port: 59714
+    uuid: 816a9e58-52a5-4390-8ae4-5f0d23373e30
+    network: tcp
+    udp: true
+    tls: true
+    flow: xtls-rprx-vision
+    servername: apple.com
+    reality-opts:
+      public-key: SrSPEmkqa7KGwrNVHuICVxdncAO2si8T2tem4ahEqFo
+      short-id: 2e782368
+    client-fingerprint: chrome
+
+  - name: hysteria2-UUISP
+    type: hysteria2
+    server: 216.167.69.239
+    port: 31353
+    ports:
+    password: 816a9e58-52a5-4390-8ae4-5f0d23373e30
+    alpn:
+      - h3
+    sni: www.bing.com
+    skip-cert-verify: true
+    fast-open: true
+
+  - name: anytls-UUISP
+    type: anytls
+    server: 216.167.69.239
+    port: 43099
+    password: 816a9e58-52a5-4390-8ae4-5f0d23373e30
+    client-fingerprint: chrome
+    udp: true
+    idle-session-check-interval: 30
+    idle-session-timeout: 30
+    sni: www.bing.com
+    skip-cert-verify: true
+
 
 proxy-groups:
   - name: 负载均衡
@@ -364,6 +404,18 @@ proxy-groups:
       - anytls-GC3T4Ciij03
       - vless-reality-vision-LCVN1t
       - hysteria2-LCVN1t
+      - vless-reality-vision-UUISP
+      - hysteria2-UUISP
+      - anytls-UUISP
+
+  # Claude / Anthropic 专用。仅 UUISP 三条直连，不含 DIRECT、全局组或 LCVN1t。
+  # 列表第一项为默认：握手测试中延迟最低且出口校验通过的 anytls-UUISP。
+  - name: Claude
+    type: select
+    proxies:
+      - anytls-UUISP
+      - hysteria2-UUISP
+      - vless-reality-vision-UUISP
 
 rules:
   # --- Magpie / local gateway ---
@@ -489,11 +541,11 @@ rules:
   - DOMAIN-KEYWORD,rrcdnbf,DIRECT
   - IP-CIDR,223.5.5.5/32,DIRECT,no-resolve
 
-  # --- Claude / Anthropic 优先走 LCVN1t HY2（VLESS 仍在节点列表备用）---
-  - DOMAIN-SUFFIX,claude.ai,hysteria2-LCVN1t
-  - DOMAIN-SUFFIX,anthropic.com,hysteria2-LCVN1t
-  - DOMAIN-KEYWORD,anthropic,hysteria2-LCVN1t
-  - DOMAIN-KEYWORD,claude,hysteria2-LCVN1t
+  # --- Claude / Anthropic 仅走 UUISP 直连（手动选择组 Claude，无链式代理）---
+  - DOMAIN-SUFFIX,claude.ai,Claude
+  - DOMAIN-SUFFIX,anthropic.com,Claude
+  - DOMAIN-KEYWORD,anthropic,Claude
+  - DOMAIN-KEYWORD,claude,Claude
 
   # --- Polymarket 及相关 API/CDN 优先走 LCVN1t HY2 ---
   - DOMAIN-SUFFIX,polymarket.com,hysteria2-LCVN1t
